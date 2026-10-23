@@ -63403,6 +63403,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2827397994819306026, guid: c45ac619e0cc1fa4c9d07126200db9ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4402943256536975137, guid: c45ac619e0cc1fa4c9d07126200db9ed, type: 3}
       propertyPath: m_Name
       value: Goose
