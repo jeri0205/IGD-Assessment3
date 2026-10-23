@@ -7,4 +7,6 @@ public class loadLevel : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+
+    
 }
