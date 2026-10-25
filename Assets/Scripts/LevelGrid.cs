@@ -39,6 +39,16 @@ public class LevelGrid : MonoBehaviour
     private int width;
     private int height;
 
+    public int GetWidth()
+    {
+        return width;
+    }
+
+    public int GetHeight()
+    {
+        return height;
+    }
+
     public void Awake()
     {
         buildFullGrid();
@@ -56,19 +66,27 @@ public class LevelGrid : MonoBehaviour
     {
         if (!inBounds(pos))
         {
-            return outerWall;   // treat anything off the map as a wall
+            return outerWall;   
         }
         return fullGrid[pos.y, pos.x];
     }
 
     public bool isPlayerWalkable(int tile)
     {
-        return tile == empty || tile == pellet || tile == powerPellet;
+        if (tile == empty || tile == pellet || tile == powerPellet)
+        {
+            return true;
+        }
+        return false;
     }
 
     public bool isGhostWalkable(int tile)
     {
-        return tile == empty || tile == pellet || tile == powerPellet || tile == ghostDoor;
+        if (tile == empty || tile == pellet || tile == powerPellet || tile == ghostDoor)
+        {
+            return true;
+        }
+        return false;
     }
 
     public Vector2Int worldToGrid(Vector3 worldPos)
@@ -84,13 +102,13 @@ public class LevelGrid : MonoBehaviour
    
     public void buildFullGrid()
     {
-        int quadRows = grid.GetLength(0);   // 15
-        int quadCols = grid.GetLength(1);   // 14
+        int quadRows = grid.GetLength(0); 
+        int quadCols = grid.GetLength(1);   
 
-        width = quadCols * 2;               // 28
-        height = quadRows * 2 - 1;          // 29 (the middle row is shared)
+        width = quadCols * 2;               
+        height = quadRows * 2 - 1;          
 
-        // allocate AFTER width/height are set, using the full size
+   
         fullGrid = new int[height, width];
         playerWalkableGrid = new bool[height, width];
         ghostWalkableGrid = new bool[height, width];
